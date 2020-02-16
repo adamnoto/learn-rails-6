@@ -4,7 +4,7 @@ class GreetingsController < ApplicationController
   # GET /greetings
   # GET /greetings.json
   def index
-    @greetings = Greeting.all
+    @greetings = Greeting.all.order(created_at: :desc)
   end
 
   # GET /greetings/1
@@ -28,7 +28,7 @@ class GreetingsController < ApplicationController
 
     respond_to do |format|
       if @greeting.save
-        format.html { redirect_to @greeting, notice: 'Greeting was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Message sent.' }
         format.json { render :show, status: :created, location: @greeting }
       else
         format.html { render :new }
