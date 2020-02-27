@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_25_013505) do
+ActiveRecord::Schema.define(version: 2020_02_25_083408) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,14 @@ ActiveRecord::Schema.define(version: 2020_02_25_013505) do
     t.index ["postable_type", "postable_id"], name: "index_posts_on_postable_type_and_postable_id"
   end
 
+  create_table "sights", force: :cascade do |t|
+    t.bigint "place_id", null: false
+    t.string "activity_type", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["place_id"], name: "index_sights_on_place_id"
+  end
+
   create_table "statuses", force: :cascade do |t|
     t.string "text", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -77,4 +85,5 @@ ActiveRecord::Schema.define(version: 2020_02_25_013505) do
   add_foreign_key "pictures", "posts"
   add_foreign_key "posts", "posts", column: "thread_id"
   add_foreign_key "posts", "users"
+  add_foreign_key "sights", "places"
 end
