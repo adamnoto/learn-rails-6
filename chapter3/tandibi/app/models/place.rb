@@ -17,5 +17,14 @@
 #  index_places_on_locale_and_coordinate  (locale,coordinate) UNIQUE
 #
 class Place < ApplicationRecord
+  PLACE_TYPES = [
+    "restaurant",
+    "coffee_shop",
+    "mall",
+    "hotel",
+    "other",
+  ].freeze
+
   validates_presence_of :coordinate, :locale, :name
+  validates_inclusion_of :place_type, in: PLACE_TYPES
 end

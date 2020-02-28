@@ -19,5 +19,17 @@
 require 'rails_helper'
 
 RSpec.describe Place, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "#valid?" do
+    it "should validate the type correctly" do
+      place = Place.new(locale: "en", name: "Cool Restaurant")
+      place.coordinate = "POINT (1 2 3)"
+      place.place_type = "unknown"
+      expect(place).not_to be_valid
+
+      Place::PLACE_TYPES.each do |type|
+        place.place_type = type
+        expect(place).to be_valid
+      end
+    end
+  end
 end
