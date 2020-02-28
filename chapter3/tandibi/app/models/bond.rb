@@ -19,4 +19,5 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Bond < ApplicationRecord
+  validates_presence_of :state
 end
