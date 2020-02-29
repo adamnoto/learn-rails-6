@@ -22,5 +22,49 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "#save" do
+    it "belongs to a user" do
+      user = User.create!(
+        first_name: "Adam",
+        email: "adam@example.com",
+        username: "adam123"
+      )
+
+      post = Post.new(
+        postable: Status.new(text: "Whohoo!"),
+      )
+
+      post.save
+      expect(post).not_to be_persisted
+
+      post.user = user
+      post.save
+      expect(post).to be_persisted
+    end
+
+    it "can belongs to another post" do
+      user = User.create!(
+        first_name: "Adam",
+        email: "adam@example.com",
+        username: "adam123"
+      )
+
+      post = Post.new(
+        postable: Status.new(text: "Oops!"),
+        user: user,
+      )
+
+      post.save
+      expect(post).to be_persisted
+
+      reply_post = Post.new(
+        postable: Status.new(text: "I forgot something"),
+        user: user,
+        thread: post
+      )
+
+      reply_post.save
+      expect(reply_post).to be_persisted
+    end
+  end
 end
