@@ -133,4 +133,17 @@ RSpec.describe User, type: :model do
       expect(user2.followers).to eq([fol3])
     end
   end
+
+  describe "#save" do
+    it "capitalized the name correctly" do
+      user = create_a_user
+
+      user.first_name = "AdaM"
+      user.last_name = "van der Berg"
+      user.save
+
+      expect(user.first_name).to eq "Adam"
+      expect(user.last_name).to eq "van der Berg"
+    end
+  end
 end
