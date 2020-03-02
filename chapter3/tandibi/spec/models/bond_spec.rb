@@ -23,8 +23,8 @@ require 'rails_helper'
 RSpec.describe Bond, type: :model do
   describe "#valid?" do
     it "should validate the state correctly" do
-      friend = User.new
-      user = User.new
+      friend = build(:user)
+      user = build(:user)
 
       bond = Bond.new(
         user: user,
