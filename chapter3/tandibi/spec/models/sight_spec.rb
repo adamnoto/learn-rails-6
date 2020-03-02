@@ -21,7 +21,7 @@ require 'rails_helper'
 RSpec.describe Sight, type: :model do
   describe "#valid?" do
     it "should validate activity type correctly" do
-      sight = Sight.new(place: Place.new)
+      sight = build(:sight)
 
       sight.activity_type = "unknown"
       expect(sight).not_to be_valid
