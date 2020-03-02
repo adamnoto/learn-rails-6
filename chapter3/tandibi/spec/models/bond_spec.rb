@@ -43,8 +43,8 @@ RSpec.describe Bond, type: :model do
   describe "#save" do
     context "when complete data is given" do
       it "can be persisted" do
-        user = User.create(email: "e1@example.org", first_name: "Edwin", username: "e1")
-        friend = User.create(email: "a1@example.org", first_name: "Adam", username: "a1")
+        user = create(:user)
+        friend = create(:user)
         bond = Bond.new(
           user: user,
           friend: friend,
