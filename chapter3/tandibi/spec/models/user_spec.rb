@@ -114,4 +114,23 @@ RSpec.describe User, type: :model do
       expect(user.follow_requests).to include(friend3)
     end
   end
+
+  describe "#followers" do
+    it "can list all of the user's followers" do
+      user1 = create_a_user
+      user2 = create_a_user
+      fol1 = create_a_user
+      fol2 = create_a_user
+      fol3 = create_a_user
+      fol4 = create_a_user
+
+      Bond.create(user: fol1, friend: user1, state: Bond::FOLLOWING)
+      Bond.create(user: fol2, friend: user1, state: Bond::FOLLOWING)
+      Bond.create(user: fol3, friend: user2, state: Bond::FOLLOWING)
+      Bond.create(user: fol4, friend: user2, state: Bond::REQUESTING)
+
+      expect(user1.followers).to eq([fol1, fol2])
+      expect(user2.followers).to eq([fol3])
+    end
+  end
 end
