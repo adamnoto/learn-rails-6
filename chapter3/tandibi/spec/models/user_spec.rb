@@ -67,7 +67,7 @@ RSpec.describe User, type: :model do
       expect(user).not_to be_valid
     end
 
-    it "is invaid if email looks bogus" do
+    it "is invalid if the email looks bogus" do
       user = create(:user)
       expect(user).to be_valid
 
