@@ -29,7 +29,8 @@ class User < ApplicationRecord
     :recoverable,
     :rememberable,
     :validatable,
-    authentication_keys: [:login]
+    authentication_keys: [:login],
+    reset_password_keys: [:login]
 
   attr_writer :login
 
@@ -77,6 +78,29 @@ class User < ApplicationRecord
     conditions = conditions.dup
     login = conditions.delete(:login).downcase
     find_authenticatable(login)
+  end
+
+  def self.send_reset_password_instructions(conditions)
+    recoverable = find_recoverable_or_init_with_errors(conditions)
+
+    if recoverable.persisted?
+      recoverable.send_reset_password_instructions
+    end
+
+    recoverable
+  end
+
+  def self.find_recoverable_or_init_with_errors(conditions)
+    conditions = conditions.dup
+    login = conditions.delete(:login).downcase
+    recoverable = find_authenticatable(login)
+
+    unless recoverable
+      recoverable = new(login: login)
+      recoverable.errors.add(:login, login.present? ? :not_found : :blank)
+    end
+
+    recoverable
   end
 
   private
