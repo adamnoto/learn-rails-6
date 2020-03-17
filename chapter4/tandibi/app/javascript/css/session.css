@@ -1,0 +1,28 @@
+.body-session {
+  @apply bg-gray-100 font-sans h-screen w-screen;
+}
+
+.body-session
+h1.title {
+  @apply font-hairline text-center text-4xl;
+}
+
+.body-session
+.container {
+  @apply mx-auto flex h-full items-center;
+}
+
+.body-session
+a {
+  @apply no-underline font-bold text-sm text-blue-400;
+}
+
+.body-session
+a:hover {
+  @apply text-blue-500;
+}
+
+.body-session
+.alert {
+  @apply mb-4;
+}
