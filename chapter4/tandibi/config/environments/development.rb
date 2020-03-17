@@ -41,6 +41,8 @@ Rails.application.configure do
     port: 3000
   }
 
+  config.action_mailer.delivery_method = :letter_opener_web
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
