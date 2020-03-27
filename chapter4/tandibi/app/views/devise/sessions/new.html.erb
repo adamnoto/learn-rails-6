@@ -1,0 +1,34 @@
+<% content_for(:page_title, "Sign in") %>
+
+<%= form_for(resource,
+  as: resource_name,
+  url: session_path(resource_name)) do |f| %>
+
+  <div class="form-group">
+    <div class="mb-4">
+      <%= f.label :login, "Username / Email" %>
+      <%= f.text_field :login, autofocus: true %>
+    </div>
+
+    <div class="mb-4">
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </div>
+
+    <div class="flex items-center justify-between">
+      <%= f.submit "Log in", class: "cta-btn" %>
+
+      <%= link_to "Forgot password?",
+        new_password_path(resource_name),
+        class: "inline-block" %>
+    </div>
+  </div>
+<% end %>
+
+<div class="text-center">
+  <p class="text-grey-500 text-sm">
+    Don't have an account?
+    <%= link_to "Create an Account",
+      new_user_registration_path %>.
+  </p>
+</div>
