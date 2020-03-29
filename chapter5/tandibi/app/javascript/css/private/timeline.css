@@ -1,0 +1,64 @@
+.body-private
+.timeline .line-group {
+  @apply mb-2;
+  @apply rounded overflow-hidden;
+}
+
+.body-private
+.timeline .line {
+  @apply p-3;
+  @apply bg-dark-700;
+}
+
+.body-private
+.timeline .line .profile-container {
+  @apply w-14;
+}
+
+.body-private
+.timeline .line .profile-container img {
+  @apply float-right;
+  @apply rounded-full;
+  height: 44px;
+  width: 44px;
+}
+
+.body-private
+.timeline .line .content {
+  @apply w-full;
+  @apply pr-3 pl-3;
+}
+
+.body-private
+.timeline .line .identifier {
+  @apply flex items-center w-full;
+}
+
+.body-private
+.timeline .line .identifier a {
+  @apply text-gray-100;
+}
+
+.body-private
+.timeline .line .identifier a:hover .name {
+  @apply underline;
+}
+
+.body-private
+.timeline .line .username {
+  @apply text-xs;
+  @apply ml-2;
+  @apply text-gray-500;
+  @apply no-underline;
+}
+
+.body-private
+.timeline .line .name {
+  @apply font-bold;
+  @apply text-sm;
+}
+
+.body-private
+.timeline .line .name:hover {
+  @apply underline;
+}

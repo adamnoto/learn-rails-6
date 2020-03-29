@@ -1,0 +1,37 @@
+<% user = post.user %>
+<% postable = post.postable %>
+
+<div class="line flex">
+  <div class="profile-container">
+    <%= image_tag user.profile_picture_url %>
+  </div>
+
+  <div class="content">
+    <div class="identifier">
+      <%= link_to timeline_path(user) do %>
+        <span class="name"><%= user.name %></span>
+        <span class="username">@<%= user.username %></span>
+      <% end %>
+    </div>
+
+    <% if postable.is_a?(Status) %>
+      <%= simple_format post.postable.text %>
+    <% elsif postable.is_a?(Sight) %>
+      <div class="flex items-center">
+        <%= evil_icon "ei-location" %>
+        <p>
+          <%= humanized_activity_type(postable) %>
+          <%= postable.place.name %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<% if post.replies.any? %>
+  <div class="replies">
+    <% post.replies.each do |reply| %>
+      <%= render "timelines/line", post: reply %>
+    <% end %>
+  </div>
+<% end %>

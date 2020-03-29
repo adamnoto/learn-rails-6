@@ -1,4 +1,5 @@
 @import "private/nav";
+@import "private/timeline";
 
 .body-private {
   @apply bg-gray-100 font-sans;
