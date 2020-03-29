@@ -11,11 +11,4 @@ module TimelinesHelper
     on_timeline? && action_name == "show" &&
       params[:username] == current_user.username
   end
-
-  def humanized_activity_type(sight)
-    case sight.activity_type
-    when Sight::CHECKIN then "checked in at"
-    when Sight::CHECKOUT then "checked out from"
-    end
-  end
 end
