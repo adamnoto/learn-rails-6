@@ -21,8 +21,14 @@
 #
 FactoryBot.define do
   factory :post do
-    actor_id { "" }
-    thread_id { "" }
-    postable { nil }
+    user { create(:user) }
+    postable { create(:status) }
+
+    trait :with_replies do
+      replies { [
+        create(:post),
+        create(:post)
+      ] }
+    end
   end
 end
