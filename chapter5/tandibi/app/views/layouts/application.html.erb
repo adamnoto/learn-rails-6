@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Tandibi</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= evil_icons_sprite %>
-  </head>
+  <%= render "layouts/header" %>
 
   <body>
     <%= render "layouts/alert" %>
