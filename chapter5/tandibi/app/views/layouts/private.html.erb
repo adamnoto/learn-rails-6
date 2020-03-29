@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <%= render "layouts/header" %>
+
+  <body class="body-private dark">
+    <main class="container sm:w-full sm:max-w-full">
+      <div class="m-auto w-full md:w-192">
+        <%= render "layouts/private/navbar" %>
+        <%= render "layouts/alert" %>
+
+        <div class="container p-6 md:pr-0 md:pl-0">
+          <div class="m-auto w-full md:w-168">
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
