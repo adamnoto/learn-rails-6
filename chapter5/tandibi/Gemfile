@@ -25,6 +25,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise', '~> 4.7'
 gem 'evil_icons', '~> 1.10'
 gem 'premailer-rails', '~> 1.11'
+gem 'active_decorator', '~> 1.3'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
