@@ -1,0 +1,23 @@
+<% form_id = "poster-#{SecureRandom.hex(3)}" %>
+
+<div class="poster flex p-3">
+  <%= form_for Post.new, html: { id: form_id } do |f| %>
+    <%= f.hidden_field :postable_type, value: "Status" %>
+    <%= f.text_area :status_text,
+      required: true,
+      placeholder: "What's happening?"  %>
+
+    <%= f.submit "Say", class: "submit-btn" %>
+  <% end %>
+</div>
+
+<script type="text/javascript">
+  var clickHandler = (evt) => {
+    var formElm = evt.target.closest("form")
+    var textareaElm = formElm.querySelector("textarea")
+    textareaElm.focus()
+  }
+
+  document.querySelector("#<%= form_id %>")
+    .addEventListener("click", clickHandler, false)
+</script>

@@ -1,5 +1,6 @@
 @import "private/nav";
 @import "private/timeline";
+@import "private/poster";
 
 .body-private {
   @apply bg-gray-100 font-sans;
