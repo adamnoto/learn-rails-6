@@ -1,7 +1,8 @@
 <% user = post.user %>
 <% postable = post.postable %>
+<% show_replies = local_assigns.fetch(:show_replies, false) %>
 
-<div class="line flex">
+<div class="line flex" data-post-path="<%= post_path(post) %>">
   <div class="profile-container">
     <%= image_tag user.profile_picture_url %>
   </div>
@@ -28,7 +29,7 @@
   </div>
 </div>
 
-<% if post.replies.any? %>
+<% if show_replies && post.replies.any? %>
   <div class="replies">
     <% post.replies.each do |reply| %>
       <%= render "timelines/line", post: reply %>

@@ -12,6 +12,6 @@ Rails.application.routes.draw do
       only: [:index, :show],
       param: :username
 
-    resources :posts, only: [:create]
+    resources :posts, only: [:create, :show]
   end
 end

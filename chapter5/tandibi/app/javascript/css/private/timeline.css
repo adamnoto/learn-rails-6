@@ -13,6 +13,13 @@
 .timeline .line {
   @apply p-3;
   @apply bg-dark-700;
+  cursor: pointer;
+}
+
+.body-private
+.timeline .line:hover {
+  @apply bg-dark-600;
+  @apply transition duration-100 ease-in;
 }
 
 .body-private

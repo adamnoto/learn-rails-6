@@ -12,6 +12,10 @@ class PostsController < ApplicationController
     redirect_back fallback_location: timelines_path
   end
 
+  def show
+    @post = Post.find(params[:id])
+  end
+
   private
 
     def permitted_params
