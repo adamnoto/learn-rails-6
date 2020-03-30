@@ -2,6 +2,13 @@
 <% postable = post.postable %>
 <% show_replies = local_assigns.fetch(:show_replies, false) %>
 
+<%= render "layouts/inside_modal",
+  title: "Send a reply",
+  modal_class: "comment_modal_#{post.id}" do %>
+
+  <%= render "posts/form", thread: post %>
+<% end %>
+
 <div class="line flex" data-post-path="<%= post_path(post) %>">
   <div class="profile-container">
     <%= image_tag user.profile_picture_url %>
@@ -26,6 +33,20 @@
         </p>
       </div>
     <% end %>
+
+    <div class="controls">
+      <%= link_to "#" do %>
+        <div class="control js-modal-open"
+          data-modal-class="comment_modal_<%= post.id %>">
+
+          <%= evil_icon "ei-comment" %>
+          <% if post.replies.any? %>
+            <span>&nbsp;<%= post.replies.count %></span>
+          <% end %>
+
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
 
