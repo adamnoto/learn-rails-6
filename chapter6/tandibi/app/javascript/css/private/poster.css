@@ -1,0 +1,44 @@
+.body-private
+.poster {
+  @apply bg-dark-700;
+}
+
+.body-private
+.poster form {
+  @apply w-full;
+}
+
+.body-private.dark
+.poster form textarea {
+  @apply bg-dark-700 w-full;
+  @apply resize-none;
+  @apply outline-none;
+}
+
+.body-private
+.poster .submit-btn {
+  @apply rounded-full p-2 w-full float-right;
+  @apply bg-indigo-800 text-white shadow;
+  color: #828d9f;
+  cursor: pointer;
+}
+
+@screen md {
+  .body-private
+  .poster .submit-btn {
+    @apply w-16;
+  }
+}
+
+.body-private
+.poster .submit-btn:hover {
+  @apply bg-indigo-700 text-white;
+}
+
+.body-private
+.poster form:focus-within > .submit-btn,
+.body-private
+.poster form:active > .submit-btn {
+  @apply bg-indigo-700 text-white;
+}
+
