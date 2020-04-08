@@ -9,7 +9,17 @@
       required: true,
       placeholder: "What's happening?"  %>
 
-    <%= f.submit "Say", class: "submit-btn" %>
+    <div class="controls">
+      <div class="options">
+        <div class="option">
+          <%= evil_icon "ei-image" %>
+        </div>
+      </div>
+
+      <div>
+        <%= f.submit "Say", class: "submit-btn" %>
+      </div>
+    </div>
   <% end %>
 </div>
 
@@ -17,6 +27,11 @@
   var clickHandler = (evt) => {
     var formElm = evt.target.closest("form")
     var textareaElm = formElm.querySelector("textarea")
+
+    if (evt.target && evt.target.classList.contains("icon")) {
+      return;
+    }
+
     textareaElm.focus()
   }
 

@@ -42,3 +42,38 @@
   @apply bg-indigo-700 text-white;
 }
 
+.body-private
+.poster .controls {
+  @apply mt-2;
+  @apply flex flex-wrap items-center justify-between;
+}
+
+.body-private
+.poster .controls .options {
+  @apply block flex-grow flex items-center w-auto;
+}
+
+.body-private
+.poster .controls .options .option {
+  @apply text-sm;
+}
+
+.body-private
+.poster .controls .options .icon {
+  @apply rounded-full align-middle;
+  height: 31px;
+  width: 31px;
+  color: #a0aec0;
+}
+
+.body-private
+.poster .controls .options .icon:hover {
+  @apply bg-teal-100 text-dark-800;
+  @apply cursor-pointer;
+  transition: all 0.25s ease;
+}
+
+.body-private
+.poster .controls .options .icon:focus-within {
+  @apply bg-teal-100 text-dark-800;
+}
