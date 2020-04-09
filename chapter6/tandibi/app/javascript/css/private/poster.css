@@ -83,3 +83,25 @@
   @apply invisible block;
   @apply w-0 h-0;
 }
+
+.body-private
+.poster .pictures {
+  @apply mt-2;
+}
+
+.body-private
+.poster .pictures .picture-cont {
+  @apply inline-block mr-2;
+}
+
+.body-private
+.poster .pictures .picture-cont.template {
+  @apply hidden;
+}
+
+.body-private
+.poster .pictures .picture-cont img {
+  @apply object-cover;
+  height: 80px;
+  width: 80px;
+}

@@ -2,12 +2,21 @@
 <% thread = local_assigns[:thread] %>
 
 <div class="poster flex <%= "p-3" unless thread %>">
-  <%= form_for Post.new, html: { id: form_id } do |f| %>
+  <%= form_with model: Post.new,
+    id: form_id,
+    multipart: true do |f| %>
+
     <%= f.hidden_field :postable_type, value: "Status" %>
     <%= f.hidden_field :thread_id, value: thread&.id %>
     <%= f.text_area :status_text,
       required: true,
       placeholder: "What's happening?"  %>
+
+    <div class="pictures">
+      <div class="picture-cont template">
+        <img class="picture">
+      </div>
+    </div>
 
     <div class="controls">
       <div class="options">
@@ -54,6 +63,47 @@
     textareaElm.focus()
   }
 
+  var revokeImageBlobUrl = (picturesElm) => {
+    var imgElms = picturesElm.querySelectorAll("img")
+
+    for (var i = 0; i < imgElms.length; i++) {
+      var imgElm = imgElms[i]
+      var blobUrl = imgElm.getAttribute("src")
+      if (blobUrl) {
+        URL.revokeObjectURL(blobUrl)
+      }
+    }
+  }
+
+  var fileChangeHandler = (evt) => {
+    var images = evt.target.files
+    var formElm = evt.target.closest("form")
+    var picturesElm = formElm.querySelector(".pictures")
+    var templateElm = picturesElm.querySelector(".template")
+
+    revokeImageBlobUrl(picturesElm)
+    picturesElm.innerHTML = ''
+    picturesElm.appendChild(templateElm)
+
+    for(var i = 0; i < images.length; i++) {
+      var image = images[i]
+      var newPicContainerElm = templateElm.cloneNode(true)
+      var newImgElm = newPicContainerElm.querySelector("img")
+
+      if (!image.type.startsWith("image")) {
+        continue
+      }
+
+      var imageUrl = URL.createObjectURL(image)
+      newImgElm.setAttribute("src", imageUrl)
+      newPicContainerElm.classList.remove("template")
+      picturesElm.appendChild(newPicContainerElm)
+    }
+  }
+
   document.querySelector("#<%= form_id %>")
     .addEventListener("click", clickHandler, false)
+
+  document.querySelector("#<%= form_id %> input[type='file']")
+    .addEventListener("change", fileChangeHandler, false)
 </script>
