@@ -77,3 +77,9 @@
 .poster .controls .options .icon:focus-within {
   @apply bg-teal-100 text-dark-800;
 }
+
+.body-private
+.poster .controls input[type='file'] {
+  @apply invisible block;
+  @apply w-0 h-0;
+}
