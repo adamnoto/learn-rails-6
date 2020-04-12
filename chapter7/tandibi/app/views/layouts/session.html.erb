@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <%= render "layouts/header" %>
+
+  <body class="body-session">
+    <h1 class="title hidden md:block absolute mb-6 mt-2 ml-2">
+      <%= content_for(:page_title) %>
+    </h1>
+
+    <main class="container">
+      <div class="m-auto w-84 md:w-96">
+        <%= render "layouts/alert" %>
+
+        <h1 class="title md:hidden mb-6">
+          <%= content_for(:page_title) %>
+        </h1>
+        <%= yield %>
+      </div>
+    </main>
+  </body>
+</html>
