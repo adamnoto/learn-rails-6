@@ -41,6 +41,11 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 5'
 end
 
+group :test do
+  gem 'capybara', '~> 3.31'
+  gem 'apparition', '~> 0.5'
+end
+
 group :development do
   gem 'annotate', '~> 3'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
