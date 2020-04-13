@@ -55,7 +55,7 @@
 
 .body-private
 .poster .controls .options .option {
-  @apply text-sm;
+  @apply text-sm mr-1;
 }
 
 .body-private
@@ -64,6 +64,11 @@
   height: 31px;
   width: 31px;
   color: #a0aec0;
+}
+
+.body-private
+.poster .controls .options .active .icon {
+  @apply bg-teal-200 text-dark-800;
 }
 
 .body-private
