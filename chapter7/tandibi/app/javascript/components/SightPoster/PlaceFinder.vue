@@ -1,6 +1,7 @@
 <template>
   <div class="sight-place-finder">
     <input type="text"
+      v-model="keyword"
       placeholder="Find place...">
   </div>
 </template>
@@ -9,6 +10,19 @@
   import Vue from "vue"
 
   const Component = Vue.extend({
+    computed: {
+      keyword: {
+        get() {
+          return this.$store.state.sight.keyword
+        },
+        set(value) {
+          this.$store.commit(
+            "SET_SIGHT_KEYWORD",
+            value,
+          )
+        }
+      }
+    },
   })
 
   export default Component

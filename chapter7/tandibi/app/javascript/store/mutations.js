@@ -3,8 +3,15 @@ const mutations = {
     state.error = error
   },
 
+  SET_SIGHT_KEYWORD(state, kw) {
+    state.sight.keyword = kw
+  },
+
   RESET(state) {
     state.error = null
+    state.sight = {
+      keyword: ""
+    }
   }
 }
 
