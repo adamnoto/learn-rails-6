@@ -2,12 +2,14 @@
   <div class="sight-place-finder">
     <input type="text"
       v-model="keyword"
+      v-on:keyup="findPlace"
       placeholder="Find place...">
   </div>
 </template>
 
 <script>
   import Vue from "vue"
+  import debounce from "lodash/debounce"
 
   const Component = Vue.extend({
     computed: {
@@ -23,6 +25,12 @@
         }
       }
     },
+
+    methods: {
+      findPlace: debounce(function() {
+        this.$store.dispatch("findPlace")
+      }, 300)
+    }
   })
 
   export default Component

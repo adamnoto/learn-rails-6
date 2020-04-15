@@ -1,5 +1,8 @@
 <template>
   <div id="sight">
+    <input type="hidden" name="post[sight_place_id]"
+      :value="selectedPlace.id">
+
     <PlaceFinder/>
 
     <div class="block sm:hidden">
@@ -31,6 +34,12 @@
       PlaceFinder,
       PlaceList
     },
+
+    computed: {
+      selectedPlace() {
+        return this.$store.state.sight.selectedPlace || {}
+      }
+    }
   }
 </script>
 

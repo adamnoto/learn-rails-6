@@ -48,17 +48,20 @@
     },
 
     mounted() {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition((pos) => {
-          const coords = pos.coords
-          this.coordinates.lat = coords.latitude
-          this.coordinates.lng = coords.longitude
-
+      this.unsubscribe = this.$store.subscribe((mutation, state) => {
+        if (mutation.type === "SET_COORDINATES") {
+          this.coordinates.lat = this.$store.state.coordinates.lat
+          this.coordinates.lng = this.$store.state.coordinates.lng
           this.redraw()
-        })
-      }
+        }
+      })
+
+      this.redraw()
     },
 
+    beforeDestroy() {
+      this.unsubscribe()
+    },
   })
 
   export default Component

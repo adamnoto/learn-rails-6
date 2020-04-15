@@ -1,7 +1,9 @@
 <template>
   <div class="places">
-    <div v-for="place in places"
+    <div v-for="place in sight.places"
       class="place"
+      @click="setPlace(place)"
+      :class="isSelected(place)"
       :key="place.id">
       <p>{{ place.name | truncate(40) }}</p>
     </div>
@@ -10,28 +12,24 @@
 
 <script>
   import Vue from "vue"
+  import { mapState } from "vuex"
 
   const Component = Vue.extend({
-    data() {
-      return {
-        places: [
-          {
-            id: "1",
-            locale: "en",
-            name: "Restaurant 1 Very Very Very" +
-              "Very Very Ultimately Very " +
-              "Very Long Name",
-            place_type: "restaurant",
-            coordinates: { lng: 1, lat: 1 }
-          },
-          {
-            id: "2",
-            locale: "en",
-            name: "Restaurant 2",
-            place_type: "restaurant",
-            coordinates: { lng: 1, lat: 1 }
-          }
-        ]
+    computed: {
+      ...mapState(["sight"]),
+    },
+
+    methods: {
+      setPlace(place) {
+        this.$store.commit("SET_SIGHT_SELECTED_PLACE", place)
+      },
+
+      isSelected(place) {
+        const placeId = place.id
+        const selectedPlace = this.sight.selectedPlace
+        if (selectedPlace && selectedPlace.id === placeId) {
+          return "selected"
+        }
       }
     }
   })
@@ -52,6 +50,14 @@
     @apply cursor-pointer;
     min-height: 4em;
     height: 4em;
+  }
+
+  .place.selected {
+    @apply bg-indigo-800;
+  }
+
+  .place.selected:hover {
+    @apply bg-indigo-700;
   }
 
   .place:hover {
