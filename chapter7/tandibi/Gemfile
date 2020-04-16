@@ -47,6 +47,7 @@ end
 group :test do
   gem 'capybara', '~> 3.31'
   gem 'apparition', '~> 0.5'
+  gem 'vcr', '~> 5.1'
 end
 
 group :development do
