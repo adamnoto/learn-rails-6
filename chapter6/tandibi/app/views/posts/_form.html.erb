@@ -1,0 +1,109 @@
+<% form_id = "poster-#{SecureRandom.hex(3)}" %>
+<% thread = local_assigns[:thread] %>
+
+<div class="poster flex <%= "p-3" unless thread %>">
+  <%= form_with model: Post.new,
+    id: form_id,
+    multipart: true do |f| %>
+
+    <%= f.hidden_field :postable_type, value: "Status" %>
+    <%= f.hidden_field :thread_id, value: thread&.id %>
+    <%= f.text_area :status_text,
+      required: true,
+      placeholder: "What's happening?"  %>
+
+    <div class="pictures">
+      <div class="picture-cont template">
+        <img class="picture">
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="options">
+        <div class="option js-pictures-uploader">
+          <input type="file" multiple
+            id="picture_files"
+            name="post[pictures][]"
+            accept="image/*">
+          <%= evil_icon "ei-image" %>
+        </div>
+      </div>
+
+      <div>
+        <%= f.submit "Say", class: "submit-btn" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<script type="text/javascript">
+  var clickHandler = (evt) => {
+    var formElm = evt.target.closest("form")
+    var textareaElm = formElm.querySelector("textarea")
+
+    if (evt.target && evt.target.classList.contains("icon")) {
+      var parentElm = evt.target.parentElement
+      var parentClasses = parentElm.classList
+
+      if (parentClasses.contains("js-pictures-uploader")) {
+        var fileElm = parentElm.querySelector("input[type='file']")
+        fileElm.click()
+      }
+
+      return
+    } else if (evt.target) {
+      var parentElm = evt.target.parentElement
+      var parentClasses = parentElm.classList
+
+      if (parentClasses.contains("js-pictures-uploader")) {
+        return
+      }
+    }
+
+    textareaElm.focus()
+  }
+
+  var revokeImageBlobUrl = (picturesElm) => {
+    var imgElms = picturesElm.querySelectorAll("img")
+
+    for (var i = 0; i < imgElms.length; i++) {
+      var imgElm = imgElms[i]
+      var blobUrl = imgElm.getAttribute("src")
+      if (blobUrl) {
+        URL.revokeObjectURL(blobUrl)
+      }
+    }
+  }
+
+  var fileChangeHandler = (evt) => {
+    var images = evt.target.files
+    var formElm = evt.target.closest("form")
+    var picturesElm = formElm.querySelector(".pictures")
+    var templateElm = picturesElm.querySelector(".template")
+
+    revokeImageBlobUrl(picturesElm)
+    picturesElm.innerHTML = ''
+    picturesElm.appendChild(templateElm)
+
+    for(var i = 0; i < images.length; i++) {
+      var image = images[i]
+      var newPicContainerElm = templateElm.cloneNode(true)
+      var newImgElm = newPicContainerElm.querySelector("img")
+
+      if (!image.type.startsWith("image")) {
+        continue
+      }
+
+      var imageUrl = URL.createObjectURL(image)
+      newImgElm.setAttribute("src", imageUrl)
+      newPicContainerElm.classList.remove("template")
+      picturesElm.appendChild(newPicContainerElm)
+    }
+  }
+
+  document.querySelector("#<%= form_id %>")
+    .addEventListener("click", clickHandler, false)
+
+  document.querySelector("#<%= form_id %> input[type='file']")
+    .addEventListener("change", fileChangeHandler, false)
+</script>

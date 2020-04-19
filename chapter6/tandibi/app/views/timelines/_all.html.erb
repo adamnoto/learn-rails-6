@@ -1,0 +1,7 @@
+<div class="timeline">
+  <% @posts.each do |post| %>
+    <div class="line-group">
+      <%= render "timelines/line", post: post %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,84 @@
+.body-session {
+  @apply bg-gray-100 font-sans h-screen w-screen;
+}
+
+.body-session
+h1.title {
+  @apply font-hairline text-center text-4xl;
+}
+
+.body-session
+.container {
+  @apply mx-auto flex h-full items-center;
+}
+
+.body-session
+.form-group {
+  @apply border-main border-t-8 bg-white rounded-lg shadow-lg;
+  @apply p-8 mb-6;
+}
+
+.body-session
+.form-group label {
+  @apply font-normal text-gray-600 block mb-2;
+}
+
+.body-session
+.form-group input[type="text"],
+.body-session
+.form-group input[type="email"],
+.body-session
+.form-group input[type="password"] {
+  @apply block appearance-none w-full bg-white;
+  @apply border border-gray-200;
+  @apply rounded shadow;
+  @apply px-2 py-2;
+}
+
+.body-session
+.form-group input[type="text"]:hover,
+.body-session
+.form-group input[type="email"]:hover,
+.body-session
+.form-group input[type="password"]:hover {
+  @apply border-gray-300;
+}
+
+.body-session
+a {
+  @apply no-underline font-bold text-sm text-blue-400;
+}
+
+.body-session
+a:hover {
+  @apply text-blue-500;
+}
+
+.body-session
+.cta-btn {
+  @apply select-none bg-main text-white font-bold;
+  @apply rounded shadow;
+  @apply py-2 px-4;
+}
+
+.body-session
+.cta-btn:hover {
+  @apply bg-main-500;
+}
+
+.body-session
+.alert {
+  @apply mb-4;
+}
+
+.body-session
+.error-box {
+  @apply bg-red-100 border-t-4 border-red-500
+    rounded-b text-red-900 px-4 py-3 mb-3 shadow-md;
+}
+
+.body-session
+.error-box ul {
+  @apply pl-4;
+  list-style: disc;
+}

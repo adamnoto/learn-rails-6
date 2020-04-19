@@ -1,0 +1,11 @@
+<% if notice && notice.present? %>
+  <div class=" bg-blue-500 alert" role="alert">
+    <%= notice %>
+  </div>
+<% end %>
+
+<% if alert && alert.present? %>
+  <div class=" bg-red-500 alert" role="alert">
+    <%= alert %>
+  </div>
+<% end %>
