@@ -1,0 +1,17 @@
+@import "private/nav";
+@import "private/timeline";
+@import "private/poster";
+
+.body-private {
+  @apply bg-gray-100 font-sans;
+}
+
+.body-private
+.container {
+  @apply mx-auto;
+}
+
+.body-private.dark {
+  @apply bg-dark-800;
+  @apply text-gray-100;
+}

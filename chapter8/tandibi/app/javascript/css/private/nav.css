@@ -1,0 +1,47 @@
+.body-private
+nav.topnav {
+  @apply flex flex-wrap items-center justify-between;
+  @apply pl-6 pr-6 pt-1 pb-1;
+  @apply bg-dark-700;
+}
+
+.body-private
+nav.topnav h1 {
+  @apply font-semibold text-2xl text-dark-400;
+  @apply mr-6;
+}
+
+.body-private
+a.linked-icon {
+  @apply inline-block mt-0 mr-3 text-main-200;
+}
+
+.body-private
+a.linked-icon:hover, a.linked-icon.active {
+  @apply text-teal-200;
+}
+
+.body-private
+a.linked-icon.active .icon {
+  @apply border-teal-200 !important;
+  border-bottom: 1px solid;
+}
+
+.body-private
+a.linked-icon .icon,
+.body-private
+nav.topnav h1 {
+  @apply border-dark-700 !important;
+  border-bottom: 1px solid;
+}
+
+.body-private
+a.linked-icon .icon {
+  width: 40px;
+  height: 40px;
+}
+
+.body-private
+a.linked-icon.sign-out {
+  @apply mr-0;
+}
