@@ -1,4 +1,4 @@
-module TimelinesHelper
+module PageTypeHelper
   def on_timeline?
     controller_path == "timelines"
   end
@@ -10,5 +10,9 @@ module TimelinesHelper
   def on_self?
     on_timeline? && action_name == "show" &&
       params[:username] == current_user.username
+  end
+
+  def on_settings?
+    controller_path.start_with? "settings"
   end
 end
