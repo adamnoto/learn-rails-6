@@ -6,4 +6,8 @@ class UserRules < Bali::Rules
       user == current_user ||
       user.followers.include?(current_user)
   end
+
+  role :admin do
+    can :see_timeline
+  end
 end
