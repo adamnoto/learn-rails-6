@@ -29,5 +29,19 @@ FactoryBot.define do
     email { "#{SecureRandom.hex(4)}@example.org" }
     is_public { true }
     password { "MyPwd123" }
+
+    trait :private do
+      is_public { false }
+    end
+
+    transient do
+      followers { [] }
+    end
+
+    after(:create) do |user, evaluator|
+      evaluator.followers.each do |follower|
+        create(:bond, :following, user: follower, friend: user)
+      end
+    end
   end
 end
