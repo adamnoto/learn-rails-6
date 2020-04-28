@@ -2,4 +2,8 @@
   <%= render("posts/form")  %>
 <% end %>
 
-<%= render "timelines/all" %>
+<% if can? current_user, :see_timeline, @visited_user %>
+  <%= render "timelines/all" %>
+<% else %>
+  <p style="text-align: center">These posts are protected</p>
+<% end %>
