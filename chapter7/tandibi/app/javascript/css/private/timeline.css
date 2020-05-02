@@ -1,0 +1,143 @@
+.body-private
+.timeline {
+  @apply mt-2;
+}
+
+.body-private
+.timeline .line-group {
+  @apply mb-2;
+  @apply rounded overflow-hidden;
+}
+
+.body-private
+.timeline .line {
+  @apply p-3;
+  @apply bg-dark-700;
+  cursor: pointer;
+}
+
+.body-private
+.timeline .line:hover {
+  @apply bg-dark-600;
+  @apply transition duration-100 ease-in;
+}
+
+.body-private
+.timeline .line .profile-container {
+  @apply w-14;
+}
+
+.body-private
+.timeline .line .profile-container img {
+  @apply float-right;
+  @apply rounded-full;
+  height: 44px;
+  width: 44px;
+}
+
+.body-private
+.timeline .line .content {
+  @apply w-full;
+  @apply pr-3 pl-3;
+}
+
+.body-private
+.timeline .line .identifier {
+  @apply flex items-center w-full;
+}
+
+.body-private
+.timeline .line .identifier a {
+  @apply text-gray-100;
+}
+
+.body-private
+.timeline .line .identifier a:hover .name {
+  @apply underline;
+}
+
+.body-private
+.timeline .line .username {
+  @apply text-xs;
+  @apply ml-2;
+  @apply text-gray-500;
+  @apply no-underline;
+}
+
+.body-private
+.timeline .line .name {
+  @apply font-bold;
+  @apply text-sm;
+}
+
+.body-private
+.timeline .line .name:hover {
+  @apply underline;
+}
+
+.body-private
+.timeline .line .controls {
+  @apply mt-2;
+  @apply flex items-center justify-between flex-wrap;
+}
+
+.body-private
+.timeline .line .control {
+  @apply flex items-center flex-shrink-0;
+  color: #a0aec0;
+}
+
+.body-private
+.timeline .line .controls .icon {
+  @apply rounded-full;
+}
+
+.body-private
+.timeline .line .controls .icon:hover {
+  @apply bg-teal-100;
+  @apply text-dark-800;
+  transition: all 0.25s ease;
+}
+
+.body-private
+.timeline .line .controls .icon:focus-within {
+  @apply bg-teal-100;
+  @apply text-dark-800;
+}
+
+.body-private
+.timeline .line .controls a:hover {
+  @apply text-teal-200;
+}
+
+.body-private
+.timeline .picture-modals .modal-container {
+  @apply max-w-full;
+}
+
+.body-private
+.timeline .picture-modals .modal-body {
+  @apply text-center;
+}
+
+.body-private
+.timeline .picture-modals img {
+  @apply inline-block;
+}
+
+.body-private
+.timeline .line .pictures {
+  @apply mt-2;
+}
+
+.body-private
+.timeline .line .picture {
+  @apply inline-block;
+}
+
+.body-private
+.timeline .line .picture img {
+  @apply object-cover mr-2;
+  height: 100px;
+  width: 100px;
+}
