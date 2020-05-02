@@ -1,6 +1,6 @@
 <div class="bonding-buttons">
   <% if can? :follow, user %>
-    <%= link_to "#", method: :post do %>
+    <%= link_to follow_bond_path(user), method: :post do %>
       <%= evil_icon "ei-plus", class: "green" %>
     <% end %>
   <% end %>
