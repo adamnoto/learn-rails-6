@@ -6,7 +6,7 @@
   <% end %>
 
   <% if can? :unfollow, user %>
-    <%= link_to "#", method: :post do %>
+    <%= link_to unfollow_bond_path(user), method: :post do %>
       <%= evil_icon "ei-minus", class: "red" %>
     <% end %>
   <% end %>

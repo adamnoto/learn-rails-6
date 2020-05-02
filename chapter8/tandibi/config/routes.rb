@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :bonds, param: :username do
       member do
         post :follow
+        post :unfollow
       end
     end
 
