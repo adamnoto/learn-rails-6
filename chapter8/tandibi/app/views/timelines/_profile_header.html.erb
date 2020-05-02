@@ -1,0 +1,29 @@
+<div class="profile-header">
+  <div class="card">
+    <div class="picture-container">
+      <%= image_tag user.profile_picture_url %>
+    </div>
+
+    <div class="content">
+      <p class="username">@<%= user.username %></p>
+      <p class="name"><%= user.name %></p>
+    </div>
+
+    <%= render "bonds/bonding_buttons", user: user %>
+  </div>
+
+  <div class="stats">
+    <%= render "timelines/profile_stat",
+      count: user.posts.count,
+      counter: "posts",
+      is_active: true %>
+
+    <%= render "timelines/profile_stat",
+      count: user.followers.count,
+      counter: "followers" %>
+
+    <%= render "timelines/profile_stat",
+      count: user.followings.count,
+      counter: "following" %>
+  </div>
+</div>

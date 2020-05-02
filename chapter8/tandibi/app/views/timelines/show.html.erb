@@ -1,3 +1,5 @@
+<%= render "timelines/profile_header", user: @visited_user %>
+
 <% if on_self? %>
   <%= render("posts/form")  %>
 <% end %>

@@ -1,0 +1,13 @@
+<div class="bonding-buttons">
+  <% if can? :follow, user %>
+    <%= link_to "#", method: :post do %>
+      <%= evil_icon "ei-plus", class: "green" %>
+    <% end %>
+  <% end %>
+
+  <% if can? :unfollow, user %>
+    <%= link_to "#", method: :post do %>
+      <%= evil_icon "ei-minus", class: "red" %>
+    <% end %>
+  <% end %>
+</div>

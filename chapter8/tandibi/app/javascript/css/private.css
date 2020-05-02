@@ -2,6 +2,8 @@
 @import "private/timeline";
 @import "private/poster";
 @import "private/settings";
+@import "private/profile_header";
+@import "private/bonding_buttons";
 
 .body-private {
   @apply bg-gray-100 font-sans;
