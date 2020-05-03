@@ -20,7 +20,8 @@
       link_to: timeline_path(user) %>
 
     <%= render "timelines/profile_stat",
-      count: user.followers.count,
+      count: user.followers.count.to_s +
+        "#{"*" if can? :see_follower_requests, user}",
       counter: "followers",
       is_active: on_follower_list?,
       link_to: followers_bond_path(user) %>

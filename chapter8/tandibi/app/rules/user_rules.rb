@@ -24,7 +24,13 @@ class UserRules < Bali::Rules
       ).exists?
   end
 
+  can :see_follower_requests do |user, current_user|
+    user == current_user &&
+      user.inward_bonds.where(state: Bond::REQUESTING).any?
+  end
+
   role :admin do
     can :see_timeline
+    can :see_follower_requests
   end
 end
