@@ -1,0 +1,7 @@
+<%= render "timelines/profile_header", user: visited_user %>
+
+<%= render "bonds/users_list",
+    users: @bonded_users do |each_user| %>
+
+  <%= render "bonds/bonding_buttons", user: each_user %>
+<% end %>

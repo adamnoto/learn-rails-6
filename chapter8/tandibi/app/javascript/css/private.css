@@ -4,6 +4,7 @@
 @import "private/settings";
 @import "private/profile_header";
 @import "private/bonding_buttons";
+@import "private/users_list";
 
 .body-private {
   @apply bg-gray-100 font-sans;

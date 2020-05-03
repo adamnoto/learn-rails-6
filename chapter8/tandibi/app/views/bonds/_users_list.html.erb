@@ -1,0 +1,20 @@
+<div class="users-list">
+  <% users.each do |user| %>
+    <div class="user">
+      <%= link_to timeline_path(user), class: "profile-link" do %>
+        <div class="picture-container">
+          <%= image_tag user.profile_picture_url %>
+        </div>
+
+        <div class="content">
+          <div class="identity">
+            <p class="name"><%= user.name %></p>
+            <p class="username">@<%= user.username %></p>
+          </div>
+        </div>
+      <% end %>
+
+      <%= yield user %>
+    </div>
+  <% end %>
+</div>
