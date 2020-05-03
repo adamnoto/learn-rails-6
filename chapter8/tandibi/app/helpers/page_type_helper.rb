@@ -15,4 +15,14 @@ module PageTypeHelper
   def on_settings?
     controller_path.start_with? "settings"
   end
+
+  def on_following_list?
+    controller_path == "bonds" &&
+      action_name == "following"
+  end
+
+  def on_follower_list?
+    controller_path == "bonds" &&
+      action_name == "followers"
+  end
 end
