@@ -5,13 +5,13 @@
       users: visited_user.inward_bonds.requesting
         .map(&:user) do |user| %>
 
-    <%= link_to "#", method: :post do %>
+    <%= link_to accept_bond_path(user), method: :post do %>
       <div class="bonding-buttons">
         <%= evil_icon "ei-check", class: "green" %>
       </div>
     <% end %>
 
-    <%= link_to "#", method: :post do %>
+    <%= link_to reject_bond_path(user), method: :post do %>
       <div class="bonding-buttons">
         <%= evil_icon "ei-close-o", class: "red" %>
       </div>

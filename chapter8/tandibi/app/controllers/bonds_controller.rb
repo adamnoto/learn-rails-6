@@ -32,6 +32,16 @@ class BondsController < ApplicationController
     redirect_to timeline_path(visited_user)
   end
 
+  def accept
+    Bond::Acceptor.call(visited_user, current_user)
+    redirect_to timeline_path(current_user)
+  end
+
+  def reject
+    Bond::Rejector.call(visited_user, current_user)
+    redirect_to timeline_path(current_user)
+  end
+
   def followers
     @bonded_users = visited_user.followers
   end
