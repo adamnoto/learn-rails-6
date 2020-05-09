@@ -1,0 +1,54 @@
+<% content_for(:page_title, "Sign up") %>
+
+<%= form_for(resource,
+  as: resource_name,
+  url: registration_path(resource_name)) do |f| %>
+
+  <div class="form-group">
+    <%= render "devise/shared/error_messages",
+      resource: resource %>
+
+    <div class="flex flex-wrap -mx-3 mb-0 md:mb-4">
+      <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name,
+          autofocus: true,
+          required: true %>
+      </div>
+
+      <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name %>
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <%= f.label :username %>
+      <%= f.text_field :username, required: true %>
+    </div>
+
+    <div class="mb-4">
+      <%= f.label :email %>
+      <%= f.email_field :email, required: true %>
+    </div>
+
+    <div class="mb-4">
+      <%= f.label :password %>
+      <%= f.password_field :password, required: true %>
+    </div>
+
+    <div class="mb-4">
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, required: true %>
+    </div>
+
+    <%= f.submit "Sign up", class: "cta-btn" %>
+  </div>
+<% end %>
+
+<div class="text-center">
+  <p class="text-grey-500 text-sm">
+    Have an account?
+    <%= link_to "Sign in", new_user_session_path %>.
+  </p>
+</div>

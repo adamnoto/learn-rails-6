@@ -1,0 +1,32 @@
+<nav class="topnav">
+  <div class="flex items-center flex-shrink-0">
+    <%= link_to timelines_path do %>
+      <h1>tandibi</h1>
+    <% end %>
+  </div>
+  <div class="block flex-grow flex items-center w-auto">
+    <div class="text-sm flex-grow">
+      <%= link_to timelines_path,
+        class: "linked-icon #{"active" if on_bunch?}" do %>
+        <%= evil_icon "ei-timeline" %>
+      <% end %>
+
+      <%= link_to timeline_path(current_user),
+        class: "linked-icon #{"active" if on_self?}" do %>
+        <%= evil_icon "ei-user" %>
+      <% end %>
+
+      <%= link_to settings_user_path,
+        class: "linked-icon #{"active" if on_settings?}" do %>
+        <%= evil_icon "ei-gear" %>
+      <% end %>
+    </div>
+    <div>
+      <%= link_to destroy_user_session_path,
+        class: "linked-icon sign-out",
+        method: :delete do %>
+        <%= evil_icon "ei-external-link" %>
+      <% end %>
+    </div>
+  </div>
+</nav>

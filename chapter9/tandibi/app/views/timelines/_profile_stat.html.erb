@@ -1,0 +1,6 @@
+<% is_active = local_assigns.fetch(:is_active, false) %>
+
+<%= link_to link_to, class: "stat #{"active" if is_active}" do %>
+  <p class="count"><%= count %></p>
+  <p class="counter"><%= counter %></p>
+<% end %>

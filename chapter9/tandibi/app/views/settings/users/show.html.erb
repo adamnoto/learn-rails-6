@@ -1,0 +1,38 @@
+<div class="settings">
+  <div class="setting-form">
+    <%= form_with model: current_user,
+      url: settings_user_path,
+      method: :patch do |f| %>
+
+      <div class="field">
+        <%= f.label :username %>
+        <%= f.text_field :username %>
+      </div>
+
+      <div class="field">
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name %>
+      </div>
+
+      <div class="field">
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name %>
+      </div>
+
+      <div class="field">
+        <%= f.label :is_public, "Public account?" %>
+        <div class="checkbox-unit">
+          <%= f.check_box :is_public %>
+          <span class="help-text">
+            Allow everyone, including those who don't follow me,
+            to discover my updates.
+          </span>
+        </div>
+      </div>
+
+      <div>
+        <%= f.submit "Update", class: "submit-btn" %>
+      </div>
+    <% end %>
+  </div>
+</div>

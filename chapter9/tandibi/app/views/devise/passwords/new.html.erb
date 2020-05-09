@@ -1,0 +1,32 @@
+<% content_for(:page_title, "Forgot password") %>
+
+<%= form_for(resource,
+  as: resource_name,
+  url: password_path(resource_name)) do |f| %>
+  <div class="form-group">
+    <%= render "devise/shared/error_messages",
+      resource: resource %>
+
+    <p class="font-light text-sm text-center text-gray-600 mb-4">
+      Please enter your username or email address and we will send
+      you an instruction on how to reset your password.
+    </p>
+
+    <div class="mb-4">
+      <%= f.text_field :login,
+        class: "text-center",
+        autofocus: true,
+        required: true,
+        placeholder: "Username / Email address" %>
+    </div>
+
+    <%= f.submit "Submit", class: "cta-btn w-full" %>
+  </div>
+<% end %>
+
+<div class="text-center">
+  <p class="text-grey-500 text-sm">
+    Have the password?
+    <%= link_to "Sign in", new_user_session_path %>.
+  </p>
+</div>

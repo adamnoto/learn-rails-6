@@ -1,0 +1,30 @@
+.body-private
+.bonding-buttons {
+  @apply self-center;
+}
+
+.body-private
+.bonding-buttons,
+.body-private
+.bonding-buttons .icon {
+  height: 42px;
+  width: 42px;
+}
+
+.body-private
+.bonding-buttons .icon {
+  @apply rounded-full;
+  color: #98a6b7;
+}
+
+.body-private
+.bonding-buttons .green.icon:hover {
+  @apply text-teal-200;
+  @apply bg-teal-800;
+}
+
+.body-private
+.bonding-buttons .red.icon:hover {
+  @apply text-red-200;
+  @apply bg-red-800;
+}
