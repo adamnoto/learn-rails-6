@@ -1,0 +1,21 @@
+@import "private/nav";
+@import "private/timeline";
+@import "private/poster";
+@import "private/settings";
+@import "private/profile_header";
+@import "private/bonding_buttons";
+@import "private/users_list";
+
+.body-private {
+  @apply bg-gray-100 font-sans;
+}
+
+.body-private
+.container {
+  @apply mx-auto;
+}
+
+.body-private.dark {
+  @apply bg-dark-800;
+  @apply text-gray-100;
+}

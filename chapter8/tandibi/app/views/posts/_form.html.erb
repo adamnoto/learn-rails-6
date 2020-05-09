@@ -1,0 +1,163 @@
+<% form_id = "poster-#{SecureRandom.hex(3)}" %>
+<% thread = local_assigns[:thread] %>
+
+<div class="poster flex <%= "p-3" unless thread %>">
+  <%= form_with model: Post.new,
+    id: form_id,
+    multipart: true do |f| %>
+
+    <%= f.hidden_field :postable_type, value: "Status" %>
+    <%= f.hidden_field :thread_id, value: thread&.id %>
+
+    <div class="poster js-status-poster">
+      <%= f.text_area :status_text,
+        required: true,
+        placeholder: "What's happening?"  %>
+    </div>
+
+    <% unless thread %>
+      <div class="poster js-sight-poster hidden"></div>
+    <% end %>
+
+    <div class="pictures">
+      <div class="picture-cont template">
+        <img class="picture">
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="options">
+        <div class="switch option js-status-poster-switch active">
+          <%= evil_icon "ei-comment"%>
+        </div>
+
+        <% unless thread %>
+          <div class="switch option js-sight-poster-switch">
+            <%= evil_icon "ei-location" %>
+          </div>
+        <% end %>
+
+        <div class="option js-pictures-uploader">
+          <input type="file" multiple
+            id="picture_files"
+            name="post[pictures][]"
+            accept="image/*">
+          <%= evil_icon "ei-image" %>
+        </div>
+      </div>
+
+      <div>
+        <%= f.submit "Say", class: "submit-btn" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<script type="text/javascript">
+  var switchActivePoster = (formElm, postableType) => {
+    var postersElm = formElm.querySelectorAll(".poster")
+    var switchesElm = formElm.querySelectorAll(".switch")
+    var postTypeHiddenElm = formElm.querySelector(
+      "[name='post[postable_type]']")
+
+    postersElm.forEach((elm) => elm.classList.add("hidden"))
+    switchesElm.forEach((elm) => elm.classList.remove("active"))
+
+    var posterCls = `.js-${postableType.toLowerCase()}-poster`
+    var switcherCls = `${posterCls}-switch`
+
+    formElm.querySelector(posterCls).classList.remove("hidden")
+    formElm.querySelector(switcherCls).classList.add("active")
+    postTypeHiddenElm.value = postableType
+  }
+
+  var clickHandler = (evt) => {
+    var formElm = evt.target.closest("form")
+    var textareaElm = formElm.querySelector("textarea")
+
+    if (evt.target && evt.target.classList.contains("icon")) {
+      var parentElm = evt.target.parentElement
+      var parentClasses = parentElm.classList
+
+      if (parentClasses.contains("js-pictures-uploader")) {
+        var fileElm = parentElm.querySelector("input[type='file']")
+        fileElm.click()
+      } else if (parentClasses.contains("js-sight-poster-switch")) {
+        switchActivePoster(formElm, "Sight")
+
+        var submiBtnElm = formElm.querySelector("[type='submit']")
+        submiBtnElm.value = "Check in"
+        submiBtnElm.style.width = "7rem"
+
+        textareaElm.removeAttribute("required")
+      } else if (parentClasses.contains("js-status-poster-switch")) {
+        switchActivePoster(formElm, "Status")
+
+        var submiBtnElm = formElm.querySelector("[type='submit']")
+        submiBtnElm.value = "Say"
+        submiBtnElm.removeAttribute("style")
+
+        textareaElm.setAttribute("required", "required")
+      }
+
+      return
+    } else if (evt.target) {
+      var parentElm = evt.target.parentElement
+      var parentClasses = parentElm.classList
+
+      if (parentClasses.contains("js-pictures-uploader")) {
+        return
+      }
+
+      if (parentElm.closest(".sight-poster")) {
+        return
+      }
+    }
+
+    textareaElm.focus()
+  }
+
+  var revokeImageBlobUrl = (picturesElm) => {
+    var imgElms = picturesElm.querySelectorAll("img")
+
+    for (var i = 0; i < imgElms.length; i++) {
+      var imgElm = imgElms[i]
+      var blobUrl = imgElm.getAttribute("src")
+      if (blobUrl) {
+        URL.revokeObjectURL(blobUrl)
+      }
+    }
+  }
+
+  var fileChangeHandler = (evt) => {
+    var images = evt.target.files
+    var formElm = evt.target.closest("form")
+    var picturesElm = formElm.querySelector(".pictures")
+    var templateElm = picturesElm.querySelector(".template")
+
+    revokeImageBlobUrl(picturesElm)
+    picturesElm.innerHTML = ''
+    picturesElm.appendChild(templateElm)
+
+    for(var i = 0; i < images.length; i++) {
+      var image = images[i]
+      var newPicContainerElm = templateElm.cloneNode(true)
+      var newImgElm = newPicContainerElm.querySelector("img")
+
+      if (!image.type.startsWith("image")) {
+        continue
+      }
+
+      var imageUrl = URL.createObjectURL(image)
+      newImgElm.setAttribute("src", imageUrl)
+      newPicContainerElm.classList.remove("template")
+      picturesElm.appendChild(newPicContainerElm)
+    }
+  }
+
+  document.querySelector("#<%= form_id %>")
+    .addEventListener("click", clickHandler, false)
+
+  document.querySelector("#<%= form_id %> input[type='file']")
+    .addEventListener("change", fileChangeHandler, false)
+</script>

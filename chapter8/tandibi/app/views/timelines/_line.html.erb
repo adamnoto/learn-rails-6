@@ -1,0 +1,82 @@
+<% user = post.user %>
+<% postable = post.postable %>
+<% show_replies = local_assigns.fetch(:show_replies, false) %>
+<% pictures = post.pictures.with_attached_file %>
+
+<%= render "layouts/inside_modal",
+  title: "Send a reply",
+  modal_class: "comment_modal_#{post.id}" do %>
+
+  <%= render "posts/form", thread: post %>
+<% end %>
+
+<div class="picture-modals">
+  <% pictures.each do |picture| %>
+    <%= render "layouts/inside_modal",
+      title: "",
+      modal_class: "picture_modal_#{picture.id}" do %>
+
+      <img src="<%= rails_blob_path(picture.file) %>">
+    <% end %>
+  <% end %>
+</div>
+
+<div class="line flex" data-post-path="<%= post_path(post) %>">
+  <div class="profile-container">
+    <%= image_tag user.profile_picture_url %>
+  </div>
+
+  <div class="content">
+    <div class="identifier">
+      <%= link_to timeline_path(user) do %>
+        <span class="name"><%= user.name %></span>
+        <span class="username">@<%= user.username %></span>
+      <% end %>
+    </div>
+
+    <% if postable.is_a?(Status) %>
+      <%= simple_format post.postable.text %>
+    <% elsif postable.is_a?(Sight) %>
+      <div class="flex items-center">
+        <%= evil_icon "ei-location" %>
+        <p>
+          <%= postable.humanized_activity_type %>
+          <%= postable.place.name %>
+        </p>
+      </div>
+    <% end %>
+
+    <div class="pictures">
+      <% pictures.each do |picture| %>
+        <a href="#">
+          <div class="picture js-modal-open"
+            data-modal-class="picture_modal_<%= picture.id %>">
+            <img src="<%= rails_blob_path(picture.file) %>">
+          </div>
+        </a>
+      <% end %>
+    </div>
+
+    <div class="controls">
+      <%= link_to "#" do %>
+        <div class="control js-modal-open"
+          data-modal-class="comment_modal_<%= post.id %>">
+
+          <%= evil_icon "ei-comment" %>
+          <% if post.replies.any? %>
+            <span>&nbsp;<%= post.replies.count %></span>
+          <% end %>
+
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<% if show_replies && post.replies.any? %>
+  <div class="replies">
+    <% post.replies.each do |reply| %>
+      <%= render "timelines/line", post: reply %>
+    <% end %>
+  </div>
+<% end %>
