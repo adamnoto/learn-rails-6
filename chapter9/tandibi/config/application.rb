@@ -37,5 +37,12 @@ module Tandibi
     config.to_prepare do
       Devise::Mailer.layout "mailer"
     end
+
+    config.i18n.available_locales =  [
+      :"en-US",
+      :"id"
+    ]
+
+    config.i18n.default_locale = :"en-US"
   end
 end
