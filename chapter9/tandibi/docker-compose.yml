@@ -1,0 +1,50 @@
+version: "3"
+
+services:
+  tandibi-db:
+    image: postgis/postgis:11-2.5-alpine
+    volumes:
+      - database:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: Password01
+
+  tandibi-webpacker:
+    build: .
+    environment:
+      NODE_ENV: development
+      RAILS_ENV: development
+      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
+    command: ./bin/webpack-dev-server
+    volumes:
+      - .:/tandibi
+      - bundler_gems:/usr/local/bundle
+    ports:
+      - "3035:3035"
+
+  tandibi-web:
+    build: .
+    tty: true
+    stdin_open: true
+    volumes:
+      - .:/tandibi
+      - bundler_gems:/usr/local/bundle
+    ports:
+      - "3000:3000"
+    depends_on:
+      - tandibi-db
+    command:
+      - /bin/sh
+      - -c
+      - |
+        # Remove a potentially pre-existing server.pid for Rails.
+        rm -f /tandibi/tmp/pids/server.pid
+        # Start server
+        bundle exec rails server -b 0.0.0.0 -p 3000
+    environment:
+      RACK_ENV: development
+      RAILS_ENV: development
+      WEBPACKER_DEV_SERVER_HOST: tandibi-webpacker
+
+volumes:
+  bundler_gems:
+  database:
