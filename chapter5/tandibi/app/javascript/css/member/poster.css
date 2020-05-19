@@ -1,21 +1,21 @@
-.body-private
+.body-member
 .poster {
   @apply bg-dark-700;
 }
 
-.body-private
+.body-member
 .poster form {
   @apply w-full;
 }
 
-.body-private.dark
+.body-member.dark
 .poster form textarea {
   @apply bg-dark-700 w-full;
   @apply resize-none;
   @apply outline-none;
 }
 
-.body-private
+.body-member
 .poster .submit-btn {
   @apply rounded-full p-2 w-full float-right;
   @apply bg-indigo-800 text-white shadow;
@@ -24,20 +24,20 @@
 }
 
 @screen md {
-  .body-private
+  .body-member
   .poster .submit-btn {
     @apply w-16;
   }
 }
 
-.body-private
+.body-member
 .poster .submit-btn:hover {
   @apply bg-indigo-700 text-white;
 }
 
-.body-private
+.body-member
 .poster form:focus-within > .submit-btn,
-.body-private
+.body-member
 .poster form:active > .submit-btn {
   @apply bg-indigo-700 text-white;
 }
