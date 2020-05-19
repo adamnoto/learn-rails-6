@@ -1,29 +1,29 @@
-.body-private
+.body-member
 .bonding-buttons {
   @apply self-center;
 }
 
-.body-private
+.body-member
 .bonding-buttons,
-.body-private
+.body-member
 .bonding-buttons .icon {
   height: 42px;
   width: 42px;
 }
 
-.body-private
+.body-member
 .bonding-buttons .icon {
   @apply rounded-full;
   color: #98a6b7;
 }
 
-.body-private
+.body-member
 .bonding-buttons .green.icon:hover {
   @apply text-teal-200;
   @apply bg-teal-800;
 }
 
-.body-private
+.body-member
 .bonding-buttons .red.icon:hover {
   @apply text-red-200;
   @apply bg-red-800;
