@@ -1,0 +1,112 @@
+.body-member
+.poster {
+  @apply bg-dark-700;
+}
+
+.body-member
+.poster form {
+  @apply w-full;
+}
+
+.body-member.dark
+.poster form textarea {
+  @apply bg-dark-700 w-full;
+  @apply resize-none;
+  @apply outline-none;
+}
+
+.body-member
+.poster .submit-btn {
+  @apply rounded-full p-2 w-full float-right;
+  @apply bg-indigo-800 text-white shadow;
+  color: #828d9f;
+  cursor: pointer;
+}
+
+@screen md {
+  .body-member
+  .poster .submit-btn {
+    @apply w-16;
+  }
+}
+
+.body-member
+.poster .submit-btn:hover {
+  @apply bg-indigo-700 text-white;
+}
+
+.body-member
+.poster form:focus-within > .submit-btn,
+.body-member
+.poster form:active > .submit-btn {
+  @apply bg-indigo-700 text-white;
+}
+
+.body-member
+.poster .controls {
+  @apply flex flex-wrap items-center justify-between;
+  @apply mt-2;
+}
+
+.body-member
+.poster .controls .options {
+  @apply block flex-grow flex items-center w-auto;
+}
+
+.body-member
+.poster .controls .options .option {
+  @apply text-sm mr-1;
+}
+
+.body-member
+.poster .controls .options .icon {
+  @apply rounded-full align-middle;
+  height: 31px;
+  width: 31px;
+  color: #a0aec0;
+}
+
+.body-member
+.poster .controls .options .active .icon {
+  @apply bg-teal-200 text-dark-800;
+}
+
+.body-member
+.poster .controls .options .icon:hover {
+  @apply bg-teal-100 text-dark-800;
+  @apply cursor-pointer;
+  transition: all 0.25s ease;
+}
+
+.body-member
+.poster .controls .options .icon:focus-within {
+  @apply bg-teal-100 text-dark-800;
+}
+
+.body-member
+.poster .controls input[type='file'] {
+  @apply invisible block;
+  @apply w-0 h-0;
+}
+
+.body-member
+.poster .pictures {
+  @apply mt-2;
+}
+
+.body-member
+.poster .pictures .picture-cont {
+  @apply inline-block mr-2;
+}
+
+.body-member
+.poster .pictures .picture-cont.template {
+  @apply hidden;
+}
+
+.body-member
+.poster .pictures .picture-cont img {
+  @apply object-cover;
+  height: 80px;
+  width: 80px;
+}

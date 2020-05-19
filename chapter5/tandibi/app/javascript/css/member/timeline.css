@@ -1,0 +1,111 @@
+.body-member
+.timeline {
+  @apply mt-2;
+}
+
+.body-member
+.timeline .line-group {
+  @apply mb-2;
+  @apply rounded overflow-hidden;
+}
+
+.body-member
+.timeline .line {
+  @apply p-3;
+  @apply bg-dark-700;
+  cursor: pointer;
+}
+
+.body-member
+.timeline .line:hover {
+  @apply bg-dark-600;
+  @apply transition duration-100 ease-in;
+}
+
+.body-member
+.timeline .line .profile-container {
+  @apply w-14;
+}
+
+.body-member
+.timeline .line .profile-container img {
+  @apply float-right;
+  @apply rounded-full;
+  height: 44px;
+  width: 44px;
+}
+
+.body-member
+.timeline .line .content {
+  @apply w-full;
+  @apply pr-3 pl-3;
+}
+
+.body-member
+.timeline .line .identifier {
+  @apply flex items-center w-full;
+}
+
+.body-member
+.timeline .line .identifier a {
+  @apply text-gray-100;
+}
+
+.body-member
+.timeline .line .identifier a:hover .name {
+  @apply underline;
+}
+
+.body-member
+.timeline .line .username {
+  @apply text-xs;
+  @apply ml-2;
+  @apply text-gray-500;
+  @apply no-underline;
+}
+
+.body-member
+.timeline .line .name {
+  @apply font-bold;
+  @apply text-sm;
+}
+
+.body-member
+.timeline .line .name:hover {
+  @apply underline;
+}
+
+.body-member
+.timeline .line .controls {
+  @apply mt-2;
+  @apply flex items-center justify-between flex-wrap;
+}
+
+.body-member
+.timeline .line .control {
+  @apply flex items-center flex-shrink-0;
+  color: #a0aec0;
+}
+
+.body-member
+.timeline .line .controls .icon {
+  @apply rounded-full;
+}
+
+.body-member
+.timeline .line .controls .icon:hover {
+  @apply bg-teal-100;
+  @apply text-dark-800;
+  transition: all 0.25s ease;
+}
+
+.body-member
+.timeline .line .controls .icon:focus-within {
+  @apply bg-teal-100;
+  @apply text-dark-800;
+}
+
+.body-member
+.timeline .line .controls a:hover {
+  @apply text-teal-200;
+}

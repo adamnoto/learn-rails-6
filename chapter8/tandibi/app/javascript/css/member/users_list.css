@@ -1,0 +1,58 @@
+.body-member
+.users-list .user {
+  @apply flex;
+}
+
+.body-member
+.users-list .user {
+  @apply flex;
+  @apply bg-dark-700;
+  @apply  mb-2 pt-2 pb-2 pr-4 pl-4;
+}
+
+.body-member
+.users-list .user:hover {
+  @apply bg-dark-600;
+  @apply transition duration-100 ease-in;
+}
+
+.body-member
+.users-list .user a.profile-link {
+  @apply flex flex-grow;
+}
+
+.body-member
+.users-list .picture-container,
+.body-member
+.users-list .content {
+  @apply self-center;
+}
+
+.body-member
+.users-list .picture-container img {
+  @apply rounded-full;
+  height: 32px;
+  width: 32px;
+}
+
+.body-member
+.users-list .content {
+  @apply ml-4 flex-grow;
+}
+
+.body-member
+.users-list .content .username,
+.body-member
+.users-list .content .name {
+  @apply leading-5;
+}
+
+.body-member
+.users-list .content .username {
+  @apply text-white;
+}
+
+.body-member
+.users-list .content .name {
+  @apply text-gray-400;
+}
