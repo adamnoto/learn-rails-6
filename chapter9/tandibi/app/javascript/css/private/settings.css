@@ -1,0 +1,72 @@
+.settings {
+  @apply p-3;
+  @apply bg-dark-700;
+}
+
+.settings
+.setting-form .field {
+  @apply p-2 pt-0 rounded;
+  @apply bg-dark-700 text-dark-600;
+  @apply border-b border-solid border-dark-700;
+  @apply mb-1;
+}
+
+.settings
+.setting-form label {
+  @apply w-full inline-block;
+  @apply text-sm;
+  color: #5c5c5c;
+}
+
+.settings
+.setting-form .field input[type="text"] {
+  @apply bg-dark-700;
+  @apply w-full outline-none;
+  color: #a0aec0;
+}
+
+.settings
+.setting-form .field:focus-within,
+.settings
+.setting-form .field:focus-within input[type="text"] {
+  @apply bg-dark-600;
+}
+
+.settings
+.setting-form .field:focus-within {
+  @apply border-b border-solid border-teal-200;
+}
+
+.settings
+.setting-form .field:focus-within label {
+  color: #a0aec0;
+}
+
+.settings
+.setting-form .help-text {
+  @apply text-sm;
+  color: #a0aec0;
+}
+
+.settings
+.setting-form .field .checkbox-unit {
+  @apply flex flex-wrap items-center;
+}
+
+.settings
+.setting-form .field .checkbox-unit .help-text {
+  @apply pl-1;
+}
+
+.settings .submit-btn {
+  @apply rounded-full p-2 w-full;
+  @apply bg-indigo-800 text-white shadow;
+  @apply mt-4 mb-2;
+  color: #828d9f;
+  cursor: pointer;
+}
+
+.settings
+.submit-btn:hover {
+  @apply bg-indigo-700 text-white;
+}

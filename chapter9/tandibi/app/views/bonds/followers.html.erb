@@ -1,0 +1,22 @@
+<%= render "timelines/profile_header", user: visited_user %>
+
+<% if can? :see_follower_requests, visited_user %>
+  <%= render "bonds/users_list",
+      users: visited_user.inward_bonds.requesting
+        .map(&:user) do |user| %>
+
+    <%= link_to accept_bond_path(user), method: :post do %>
+      <div class="bonding-buttons">
+        <%= evil_icon "ei-check", class: "green" %>
+      </div>
+    <% end %>
+
+    <%= link_to reject_bond_path(user), method: :post do %>
+      <div class="bonding-buttons">
+        <%= evil_icon "ei-close-o", class: "red" %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= render "bonds/users_list", users: @bonded_users %>

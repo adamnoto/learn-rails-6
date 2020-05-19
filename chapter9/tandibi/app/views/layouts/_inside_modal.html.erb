@@ -1,0 +1,24 @@
+<div class="modal opacity-0 pointer-events-none"
+  data-modal-class="<%= modal_class %>">
+  <div class="modal-overlay js-modal-overlay"></div>
+
+  <div class="modal-container">
+    <div class="js-modal-close close-top-left">
+      <%= evil_icon "ei-close" %>
+      <span class="text-sm">(Esc)</span>
+    </div>
+
+    <div class="modal-content">
+      <div class="title-bar">
+        <p class="title"><%= title %></p>
+        <div class="js-modal-close cursor-pointer z-50">
+          <%= evil_icon "ei-close" %>
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+</div>

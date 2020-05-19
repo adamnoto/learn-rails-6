@@ -1,0 +1,11 @@
+<%= render "timelines/profile_header", user: @visited_user %>
+
+<% if on_self? %>
+  <%= render("posts/form")  %>
+<% end %>
+
+<% if can? current_user, :see_timeline, @visited_user %>
+  <%= render "timelines/all" %>
+<% else %>
+  <p style="text-align: center">These posts are protected</p>
+<% end %>

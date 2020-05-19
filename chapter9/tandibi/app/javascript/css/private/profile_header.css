@@ -1,0 +1,82 @@
+.body-private
+.profile-header {
+  @apply mb-8;
+}
+
+.body-private
+.profile-header .card {
+  @apply flex;
+}
+
+.body-private
+.profile-header .picture-container img {
+  @apply rounded-full;
+  height: 64px;
+  width: 64px;
+}
+
+.body-private
+.profile-header .content {
+  @apply ml-4 flex-grow;
+}
+
+.body-private
+.profile-header .content .username,
+.body-private
+.profile-header .content .name {
+  @apply leading-none;
+}
+
+.body-private
+.profile-header .content .username {
+  @apply text-4xl;
+}
+
+.body-private
+.profile-header .content .name {
+  @apply pt-2;
+}
+
+.body-private
+.profile-header .stats {
+  @apply flex flex-wrap;
+  @apply mt-4;
+}
+
+.body-private
+.profile-header .stats .stat {
+  @apply w-1/3;
+  @apply pt-3 pb-3;
+  @apply border-dark-600 border-b border-b-4 border-solid;
+  @apply bg-dark-600;
+}
+
+.body-private
+.profile-header .stats .stat:hover {
+  @apply bg-dark-500 border-dark-500;
+}
+
+.body-private
+.profile-header .stats p {
+  @apply leading-none text-center;
+}
+
+.body-private
+.profile-header .stats p.count {
+  @apply text-gray-300 font-extrabold;
+}
+
+.body-private
+.profile-header .stats p.counter {
+  @apply text-gray-400;
+}
+
+.body-private
+.profile-header .stats .stat.active {
+  @apply bg-dark-700 border-teal-200;
+}
+
+.body-private
+.profile-header .stats .stat.active:hover {
+  @apply bg-dark-500;
+}
