@@ -30,7 +30,6 @@ gem "aws-sdk-s3", '~> 1.16', require: false
 gem 'faraday', '~> 1.0'
 gem 'delayed_job_active_record', '~> 4.1'
 gem 'active_model_serializers', '~> 0.10'
-gem 'bali', '~> 6.0'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

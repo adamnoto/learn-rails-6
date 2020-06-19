@@ -66,10 +66,6 @@ class User < ApplicationRecord
 
   before_save :ensure_proper_name_case
 
-  def to_param
-    username
-  end
-
   def login
     @login || username || email
   end

@@ -8,7 +8,6 @@
 #  first_name             :string           not null
 #  is_public              :boolean          default("true"), not null
 #  last_name              :string
-#  locale                 :string           default("en-US"), not null
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string

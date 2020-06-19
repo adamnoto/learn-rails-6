@@ -11,5 +11,3 @@ If there is an error, ensure a config/master.key can be found with the following
 ```
 4ab82a34f5642078eb35da4b67d94180
 ```
-
-And ensure that you are running the app from within a docker container.

@@ -22,8 +22,6 @@
 #  index_users_on_username              (username) UNIQUE
 #
 class User < ApplicationRecord
-  extract_roles_from :role
-
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable,
@@ -74,10 +72,6 @@ class User < ApplicationRecord
 
   def login
     @login || username || email
-  end
-
-  def role
-    username == "tandibi" ? :admin : :member
   end
 
   def self.find_authenticatable(login)

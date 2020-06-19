@@ -20,10 +20,8 @@
 #
 FactoryBot.define do
   factory :bond do
-    trait :following do
-      state { Bond::FOLLOWING }
-      user { create(:user) }
-      friend { create(:user) }
-    end
+    actor_id { 1 }
+    friend_id { 1 }
+    state { "MyString" }
   end
 end

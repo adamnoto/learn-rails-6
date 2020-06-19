@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   layout :layout_by_resource
   before_action :config_devise_params, if: :devise_controller?
-  before_action :set_locale
 
   private
 
@@ -17,11 +16,6 @@ class ApplicationController < ActionController::Base
       when member_controller? then "member"
       else "application"
       end
-    end
-
-    def set_locale
-      return unless current_user
-      I18n.locale = current_user.locale
     end
 
   protected

@@ -8,16 +8,9 @@
 
     <%= f.hidden_field :postable_type, value: "Status" %>
     <%= f.hidden_field :thread_id, value: thread&.id %>
-
-    <div class="poster js-status-poster">
-      <%= f.text_area :status_text,
-        required: true,
-        placeholder: "What's happening?"  %>
-    </div>
-
-    <% unless thread %>
-      <div class="poster js-sight-poster hidden"></div>
-    <% end %>
+    <%= f.text_area :status_text,
+      required: true,
+      placeholder: "What's happening?"  %>
 
     <div class="pictures">
       <div class="picture-cont template">
@@ -27,16 +20,6 @@
 
     <div class="controls">
       <div class="options">
-        <div class="switch option js-status-poster-switch active">
-          <%= evil_icon "ei-comment"%>
-        </div>
-
-        <% unless thread %>
-          <div class="switch option js-sight-poster-switch">
-            <%= evil_icon "ei-location" %>
-          </div>
-        <% end %>
-
         <div class="option js-pictures-uploader">
           <input type="file" multiple
             id="picture_files"
@@ -54,23 +37,6 @@
 </div>
 
 <script type="text/javascript">
-  var switchActivePoster = (formElm, postableType) => {
-    var postersElm = formElm.querySelectorAll(".poster")
-    var switchesElm = formElm.querySelectorAll(".switch")
-    var postTypeHiddenElm = formElm.querySelector(
-      "[name='post[postable_type]']")
-
-    postersElm.forEach((elm) => elm.classList.add("hidden"))
-    switchesElm.forEach((elm) => elm.classList.remove("active"))
-
-    var posterCls = `.js-${postableType.toLowerCase()}-poster`
-    var switcherCls = `${posterCls}-switch`
-
-    formElm.querySelector(posterCls).classList.remove("hidden")
-    formElm.querySelector(switcherCls).classList.add("active")
-    postTypeHiddenElm.value = postableType
-  }
-
   var clickHandler = (evt) => {
     var formElm = evt.target.closest("form")
     var textareaElm = formElm.querySelector("textarea")
@@ -82,22 +48,6 @@
       if (parentClasses.contains("js-pictures-uploader")) {
         var fileElm = parentElm.querySelector("input[type='file']")
         fileElm.click()
-      } else if (parentClasses.contains("js-sight-poster-switch")) {
-        switchActivePoster(formElm, "Sight")
-
-        var submiBtnElm = formElm.querySelector("[type='submit']")
-        submiBtnElm.value = "Check in"
-        submiBtnElm.style.width = "7rem"
-
-        textareaElm.removeAttribute("required")
-      } else if (parentClasses.contains("js-status-poster-switch")) {
-        switchActivePoster(formElm, "Status")
-
-        var submiBtnElm = formElm.querySelector("[type='submit']")
-        submiBtnElm.value = "Say"
-        submiBtnElm.removeAttribute("style")
-
-        textareaElm.setAttribute("required", "required")
       }
 
       return
@@ -106,10 +56,6 @@
       var parentClasses = parentElm.classList
 
       if (parentClasses.contains("js-pictures-uploader")) {
-        return
-      }
-
-      if (parentElm.closest(".sight-poster")) {
         return
       }
     }

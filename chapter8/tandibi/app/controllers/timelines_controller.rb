@@ -7,9 +7,7 @@ class TimelinesController < ApplicationController
   end
 
   def show
-    @visited_user = User.find_by_username!(params[:username])
-    @posts = @visited_user
-      .posts
+    @posts = Post.of(params[:username])
       .not_reply
       .order("created_at DESC")
   end

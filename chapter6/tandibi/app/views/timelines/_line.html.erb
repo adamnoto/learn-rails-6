@@ -1,7 +1,6 @@
 <% user = post.user %>
 <% postable = post.postable %>
 <% show_replies = local_assigns.fetch(:show_replies, false) %>
-<% pictures = post.pictures.with_attached_file %>
 
 <%= render "layouts/inside_modal",
   title: "Send a reply",
@@ -9,17 +8,6 @@
 
   <%= render "posts/form", thread: post %>
 <% end %>
-
-<div class="picture-modals">
-  <% pictures.each do |picture| %>
-    <%= render "layouts/inside_modal",
-      title: "",
-      modal_class: "picture_modal_#{picture.id}" do %>
-
-      <img src="<%= rails_blob_path(picture.file) %>">
-    <% end %>
-  <% end %>
-</div>
 
 <div class="line flex" data-post-path="<%= post_path(post) %>">
   <div class="profile-container">
@@ -45,17 +33,6 @@
         </p>
       </div>
     <% end %>
-
-    <div class="pictures">
-      <% pictures.each do |picture| %>
-        <a href="#">
-          <div class="picture js-modal-open"
-            data-modal-class="picture_modal_<%= picture.id %>">
-            <img src="<%= rails_blob_path(picture.file) %>">
-          </div>
-        </a>
-      <% end %>
-    </div>
 
     <div class="controls">
       <%= link_to "#" do %>

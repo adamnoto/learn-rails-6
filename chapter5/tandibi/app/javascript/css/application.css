@@ -3,7 +3,5 @@
 @import "tailwindcss/utilities";
 
 @import "common";
-@import "modal";
 @import "home";
 @import "session";
-@import "member";

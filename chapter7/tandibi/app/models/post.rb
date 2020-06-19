@@ -33,5 +33,4 @@ class Post < ApplicationRecord
 
   ## for the forms
   attr_accessor :status_text
-  attr_accessor :sight_place_id
 end

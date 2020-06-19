@@ -4,18 +4,8 @@ class ApplicationController < ActionController::Base
 
   private
 
-    def member_controller?
-      return false if controller_path == "home"
-
-      true
-    end
-
     def layout_by_resource
-      case
-      when devise_controller? then "session"
-      when member_controller? then "member"
-      else "application"
-      end
+      devise_controller? ? "session" : "application"
     end
 
   protected

@@ -12,7 +12,7 @@
     <div class="poster js-status-poster">
       <%= f.text_area :status_text,
         required: true,
-        placeholder: t(".whats_happening")  %>
+        placeholder: "What's happening?"  %>
     </div>
 
     <% unless thread %>
@@ -47,7 +47,7 @@
       </div>
 
       <div>
-        <%= f.submit t("common.say"), class: "submit-btn" %>
+        <%= f.submit "Say", class: "submit-btn" %>
       </div>
     </div>
   <% end %>

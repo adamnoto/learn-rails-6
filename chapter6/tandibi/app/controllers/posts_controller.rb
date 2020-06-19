@@ -23,7 +23,6 @@ class PostsController < ApplicationController
         :postable_type,
         :status_text,
         :thread_id,
-        :pictures => [],
       )
     end
 

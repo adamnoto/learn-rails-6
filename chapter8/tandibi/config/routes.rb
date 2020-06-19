@@ -12,22 +12,7 @@ Rails.application.routes.draw do
       only: [:index, :show],
       param: :username
 
-    resources :bonds, param: :username do
-      member do
-        post :follow
-        post :unfollow
-        post :accept
-        post :reject
-        get :followers
-        get :following
-      end
-    end
-
     resources :posts, only: [:create, :show]
-
-    namespace :settings do
-      resource :user, only: [:show, :update]
-    end
   end
 
   namespace :api do

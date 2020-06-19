@@ -109,35 +109,3 @@
 .timeline .line .controls a:hover {
   @apply text-teal-200;
 }
-
-.body-member
-.timeline .picture-modals .modal-container {
-  @apply max-w-full;
-}
-
-.body-member
-.timeline .picture-modals .modal-body {
-  @apply text-center;
-}
-
-.body-member
-.timeline .picture-modals img {
-  @apply inline-block;
-}
-
-.body-member
-.timeline .line .pictures {
-  @apply mt-2;
-}
-
-.body-member
-.timeline .line .picture {
-  @apply inline-block;
-}
-
-.body-member
-.timeline .line .picture img {
-  @apply object-cover mr-2;
-  height: 100px;
-  width: 100px;
-}

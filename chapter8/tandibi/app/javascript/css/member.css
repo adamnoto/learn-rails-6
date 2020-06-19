@@ -1,10 +1,6 @@
 @import "member/nav";
 @import "member/timeline";
 @import "member/poster";
-@import "member/settings";
-@import "member/profile_header";
-@import "member/bonding_buttons";
-@import "member/users_list";
 
 .body-member {
   @apply bg-gray-100 font-sans;

@@ -44,8 +44,8 @@
 
 .body-member
 .poster .controls {
-  @apply flex flex-wrap items-center justify-between;
   @apply mt-2;
+  @apply flex flex-wrap items-center justify-between;
 }
 
 .body-member
@@ -55,7 +55,7 @@
 
 .body-member
 .poster .controls .options .option {
-  @apply text-sm mr-1;
+  @apply text-sm;
 }
 
 .body-member
@@ -64,11 +64,6 @@
   height: 31px;
   width: 31px;
   color: #a0aec0;
-}
-
-.body-member
-.poster .controls .options .active .icon {
-  @apply bg-teal-200 text-dark-800;
 }
 
 .body-member
