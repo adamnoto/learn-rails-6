@@ -13,3 +13,12 @@ If there is an error, ensure a config/master.key can be found with the following
 ```
 
 And ensure that you are running the app from within a docker container.
+
+
+## Running in Dockerized Environment
+
+```
+$ docker-compose build --parallel --no-cache
+$ docker-compose up
+$ docker-compose run --rm tandibi-web bundle exec rspec
+```
