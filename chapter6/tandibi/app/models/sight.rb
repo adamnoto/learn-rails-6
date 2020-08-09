@@ -24,5 +24,5 @@ class Sight < ApplicationRecord
 
   belongs_to :place
   validates :activity_type, presence: true
-  validates_inclusion_of :activity_type, in: ACTIVITY_TYPES
+  validates :activity_type, inclusion: { in: ACTIVITY_TYPES }
 end
