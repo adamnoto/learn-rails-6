@@ -19,8 +19,8 @@
 class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :username, uniqueness: true
-  validates_presence_of :first_name
-  validates_presence_of :username
+  validates :first_name, presence: true
+  validates :username, presence: true
   validates_format_of :email, with: URI::MailTo::EMAIL_REGEXP,
     message: "must be a valid email address"
 
