@@ -8,5 +8,5 @@
 #  updated_at :datetime         not null
 #
 class Status < ApplicationRecord
-  validates_presence_of :text
+  validates :text, presence: true
 end

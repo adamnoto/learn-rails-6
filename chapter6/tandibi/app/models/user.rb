@@ -34,12 +34,14 @@ class User < ApplicationRecord
 
   attr_writer :login
 
-  validates_uniqueness_of :email
-  validates_uniqueness_of :username
-  validates_presence_of :first_name
-  validates_presence_of :username
-  validates_format_of :email, with: URI::MailTo::EMAIL_REGEXP,
+  validates :email, uniqueness: true
+  validates :username, uniqueness: true
+  validates :first_name, presence: true
+  validates :username, presence: true
+  validates :email, format: {
+    with: URI::MailTo::EMAIL_REGEXP,
     message: "must be a valid email address"
+  }
 
   has_many :posts
 
